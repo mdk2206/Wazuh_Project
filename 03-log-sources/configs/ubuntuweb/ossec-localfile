@@ -1,0 +1,20 @@
+Đây là đoạn cấu hình thêm vào /var/ossec/etc/ossec.conf trên máy Ubuntuweb
+Đặt BÊN TRONG thẻ <ossec_config>, sau đó chạy: sudo systemctl restart wazuh-agent
+
+<!-- Log truy cập Apache: nguồn phát hiện tấn công web
+<localfile>
+  <log_format>apache</log_format>
+  <location>/var/log/apache2/access.log</location>
+</localfile>
+ 
+<!-- Log lỗi Apache -->
+<localfile>
+  <log_format>apache</log_format>
+  <location>/var/log/apache2/error.log</location>
+</localfile>
+ 
+<!-- Log của auditd: sửa file nhạy cảm, lệnh chạy với quyền root -->
+<localfile>
+  <log_format>audit</log_format>
+  <location>/var/log/audit/audit.log</location>
+</localfile>

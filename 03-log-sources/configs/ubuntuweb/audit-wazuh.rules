@@ -1,0 +1,13 @@
+# /etc/audit/rules.d/wazuh.rules
+# Nạp bằng: sudo augenrules --load   |   Kiểm tra bằng: sudo auditctl -l
+
+# Theo dõi ghi (w) và đổi thuộc tính (a) của các file nhạy cảm
+-w /etc/passwd -p wa -k audit-wazuh-w
+-w /etc/shadow -p wa -k audit-wazuh-w
+-w /etc/sudoers -p wa -k audit-wazuh-w
+-w /etc/ssh/sshd_config -p wa -k audit-wazuh-w
+
+# Ghi lại mọi lệnh được chạy với quyền root (euid=0)
+# Cần cả hai dòng vì có kiến trúc 64-bit và 32-bit
+-a exit,always -F arch=b64 -F euid=0 -S execve -k audit-wazuh-c
+-a exit,always -F arch=b32 -F euid=0 -S execve -k audit-wazuh-c

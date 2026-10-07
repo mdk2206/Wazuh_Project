@@ -1,0 +1,17 @@
+<!--
+  Đoạn cấu hình thêm vào C:\Program Files (x86)\ossec-agent\ossec.conf trên win-client01.
+  Đặt BÊN TRONG thẻ <ossec_config>, sau đó chạy (PowerShell quyền Admin): Restart-Service -Name wazuh
+  Kênh Security đã nằm trong cấu hình mặc định của agent Windows nên không cần thêm.
+-->
+
+<!-- Sysmon: tạo tiến trình, kết nối mạng, thay đổi registry... -->
+<localfile>
+  <location>Microsoft-Windows-Sysmon/Operational</location>
+  <log_format>eventchannel</log_format>
+</localfile>
+
+<!-- PowerShell Operational: script block logging -->
+<localfile>
+  <location>Microsoft-Windows-PowerShell/Operational</location>
+  <log_format>eventchannel</log_format>
+</localfile>

@@ -1,0 +1,17 @@
+<!--
+  Thêm dòng này bên trong khối <syscheck> có sẵn của /var/ossec/etc/ossec.conf
+  trên linux-web01, sau đó: sudo systemctl restart wazuh-agent
+ 
+  - check_all="yes"      kiểm tra mọi thuộc tính (checksum, quyền, chủ sở hữu, kích thước, thời gian sửa)
+  - whodata="yes"        phát hiện thời gian thực + ghi nhận user/tiến trình đã đổi file (cần auditd)
+  - report_changes="yes" lưu nội dung để thấy chính xác đã sửa gì (chỉ dùng cho thư mục nhỏ)
+-->
+<directories check_all="yes" whodata="yes" report_changes="yes">/var/www/html</directories>
+
+<!--
+  Thêm dòng này bên trong khối <syscheck> có sẵn của
+  C:\Program Files (x86)\ossec-agent\ossec.conf trên win-client01.
+  Sau đó (PowerShell quyền Admin): Restart-Service -Name wazuh
+  Thư mục C:\FIM-Lab là thư mục riêng tạo cho bài thử, tránh làm log ồn.
+-->
+<directories check_all="yes" whodata="yes" report_changes="yes">C:\FIM-Lab</directories>
